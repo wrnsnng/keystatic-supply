@@ -1,0 +1,221 @@
+/* Import Radix Colors */
+@import './colors.css';
+
+/* Base Styles */
+html {
+  background-color: var(--background-base);
+  color: var(--text-high-contrast);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-high-contrast);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-medium-contrast);
+}
+
+a {
+  color: var(--accent-9);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-10);
+  text-decoration: underline;
+}
+
+/* Layout Components */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-subtle);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--accent-9);
+  color: white;
+  border-color: var(--accent-9);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-10);
+  border-color: var(--accent-10);
+}
+
+.btn-secondary {
+  background-color: var(--slate4);
+  color: var(--text-high-contrast);
+  border-color: var(--slate4);
+}
+
+.btn-secondary:hover {
+  background-color: var(--slate5);
+  border-color: var(--slate5);
+}
+
+/* Status Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  border-radius: 99999px;
+}
+
+.badge-planned {
+  background-color: var(--status-planned-bg);
+  color: var(--status-planned-text);
+}
+
+.badge-in-progress {
+  background-color: var(--status-in-progress-bg);
+  color: var(--status-in-progress-text);
+}
+
+.badge-completed {
+  background-color: var(--status-completed-bg);
+  color: var(--status-completed-text);
+}
+
+/* Category Badges */
+.category-inputs {
+  background-color: var(--category-inputs-bg);
+  color: var(--category-inputs-text);
+}
+
+.category-navigation {
+  background-color: var(--category-navigation-bg);
+  color: var(--category-navigation-text);
+}
+
+.category-layout {
+  background-color: var(--category-layout-bg);
+  color: var(--category-layout-text);
+}
+
+.category-feedback {
+  background-color: var(--category-feedback-bg);
+  color: var(--category-feedback-text);
+}
+
+.category-data-display {
+  background-color: var(--category-data-display-bg);
+  color: var(--category-data-display-text);
+}
+
+.category-overlays {
+  background-color: var(--category-overlays-bg);
+  color: var(--category-overlays-text);
+}
+
+/* Utilities */
+.text-high-contrast {
+  color: var(--text-high-contrast);
+}
+
+.text-medium-contrast {
+  color: var(--text-medium-contrast);
+}
+
+.text-low-contrast {
+  color: var(--text-low-contrast);
+}
+
+.bg-base {
+  background-color: var(--background-base);
+}
+
+.bg-subtle {
+  background-color: var(--background-subtle);
+}
+
+.bg-ui {
+  background-color: var(--background-ui);
+}
+
+/* Responsive utilities */
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+} 

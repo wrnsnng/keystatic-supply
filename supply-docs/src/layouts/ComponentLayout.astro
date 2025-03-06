@@ -10,21 +10,37 @@ export interface Props {
 
 const { title, description, category, status } = Astro.props;
 
-// Get status label and color based on status value
-const statusInfo = {
-  'planned': { label: 'Planned', color: 'bg-gray-200 text-gray-800' },
-  'in-progress': { label: 'In Progress', color: 'bg-blue-200 text-blue-800' },
-  'completed': { label: 'Completed', color: 'bg-green-200 text-green-800' }
+// Status class mapping 
+const statusClass = {
+  'planned': 'badge badge-planned',
+  'in-progress': 'badge badge-in-progress',
+  'completed': 'badge badge-completed'
 }[status];
 
-// Get category label
-const categoryInfo = {
-  'inputs': { label: 'Inputs', color: 'bg-purple-100 text-purple-800' },
-  'navigation': { label: 'Navigation', color: 'bg-yellow-100 text-yellow-800' },
-  'layout': { label: 'Layout', color: 'bg-pink-100 text-pink-800' },
-  'feedback': { label: 'Feedback', color: 'bg-orange-100 text-orange-800' },
-  'data-display': { label: 'Data Display', color: 'bg-teal-100 text-teal-800' },
-  'overlays': { label: 'Overlays', color: 'bg-indigo-100 text-indigo-800' }
+// Category class mapping
+const categoryClass = {
+  'inputs': 'badge category-inputs',
+  'navigation': 'badge category-navigation',
+  'layout': 'badge category-layout',
+  'feedback': 'badge category-feedback',
+  'data-display': 'badge category-data-display',
+  'overlays': 'badge category-overlays',
+}[category];
+
+// Get text labels
+const statusLabel = {
+  'planned': 'Planned',
+  'in-progress': 'In Progress',
+  'completed': 'Completed'
+}[status];
+
+const categoryLabel = {
+  'inputs': 'Inputs',
+  'navigation': 'Navigation',
+  'layout': 'Layout',
+  'feedback': 'Feedback',
+  'data-display': 'Data Display',
+  'overlays': 'Overlays',
 }[category];
 ---
 
@@ -34,15 +50,15 @@ const categoryInfo = {
       <div class="flex flex-wrap items-center gap-4 mb-2">
         <h1 class="text-3xl font-bold">{title}</h1>
         <div class="flex gap-2">
-          <span class={`px-3 py-1 rounded-full text-sm font-medium ${categoryInfo.color}`}>
-            {categoryInfo.label}
+          <span class={categoryClass}>
+            {categoryLabel}
           </span>
-          <span class={`px-3 py-1 rounded-full text-sm font-medium ${statusInfo.color}`}>
-            {statusInfo.label}
+          <span class={statusClass}>
+            {statusLabel}
           </span>
         </div>
       </div>
-      <p class="text-lg text-gray-600">{description}</p>
+      <p class="text-lg text-medium-contrast">{description}</p>
     </header>
     
     <div class="prose max-w-none">
@@ -52,5 +68,53 @@ const categoryInfo = {
 </Layout>
 
 <style>
-  /* Add any component documentation specific styles here */
+  /* Component-specific styles */
+  .prose {
+    color: var(--text-high-contrast);
+  }
+  
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    color: var(--text-high-contrast);
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .prose h2 {
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 0.25em;
+  }
+  
+  .prose p {
+    margin-bottom: 1em;
+  }
+  
+  .prose code {
+    background-color: var(--background-subtle);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+  
+  .prose pre {
+    background-color: var(--slate2);
+    padding: 1em;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+  
+  .prose pre code {
+    background-color: transparent;
+    padding: 0;
+    font-size: 0.9em;
+  }
+  
+  .prose ul, .prose ol {
+    margin-bottom: 1em;
+    padding-left: 1.5em;
+  }
+  
+  .prose li {
+    margin-bottom: 0.5em;
+  }
 </style> 

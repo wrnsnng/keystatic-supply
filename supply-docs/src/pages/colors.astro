@@ -1,0 +1,227 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Color scales we want to showcase
+const colorScales = [
+  { name: 'slate', label: 'Slate', description: 'Main neutral color' },
+  { name: 'blue', label: 'Blue', description: 'Primary accent color' },
+  { name: 'green', label: 'Green', description: 'Success states' },
+  { name: 'red', label: 'Red', description: 'Error states' },
+  { name: 'amber', label: 'Amber', description: 'Warning states' },
+  { name: 'purple', label: 'Purple', description: 'Inputs category' },
+  { name: 'yellow', label: 'Yellow', description: 'Navigation category' },
+  { name: 'pink', label: 'Pink', description: 'Layout category' },
+  { name: 'orange', label: 'Orange', description: 'Feedback category' },
+  { name: 'teal', label: 'Teal', description: 'Data Display category' },
+  { name: 'indigo', label: 'Indigo', description: 'Overlays category' },
+];
+
+// Create steps for each color scale
+const steps = Array.from({ length: 12 }, (_, i) => i + 1);
+---
+
+<Layout title="Color Palette | Supply Design System">
+  <div class="container mx-auto px-4 py-8 max-w-5xl">
+    <header class="mb-12 text-center">
+      <h1 class="text-4xl font-bold mb-4">Color Palette</h1>
+      <p class="text-xl text-medium-contrast max-w-3xl mx-auto">
+        Our design system color palette is based on Radix Colors, providing accessible and consistent colors for all UI components.
+      </p>
+    </header>
+
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-border-subtle">Theme Colors</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div class="card p-6">
+          <h3 class="font-semibold mb-2">Background</h3>
+          <div class="space-y-2">
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded bg-background-base mr-4 border border-border-subtle"></div>
+              <div>
+                <p class="font-medium">Base</p>
+                <p class="text-sm text-medium-contrast">--background-base</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded bg-subtle mr-4 border border-border-subtle"></div>
+              <div>
+                <p class="font-medium">Subtle</p>
+                <p class="text-sm text-medium-contrast">--background-subtle</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded bg-ui mr-4 border border-border-subtle"></div>
+              <div>
+                <p class="font-medium">UI</p>
+                <p class="text-sm text-medium-contrast">--background-ui</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="font-semibold mb-2">Text</h3>
+          <div class="space-y-2">
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded bg-white flex items-center justify-center mr-4 border border-border-subtle">
+                <span class="text-high-contrast font-bold">Aa</span>
+              </div>
+              <div>
+                <p class="font-medium">High Contrast</p>
+                <p class="text-sm text-medium-contrast">--text-high-contrast</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded bg-white flex items-center justify-center mr-4 border border-border-subtle">
+                <span class="text-medium-contrast font-bold">Aa</span>
+              </div>
+              <div>
+                <p class="font-medium">Medium Contrast</p>
+                <p class="text-sm text-medium-contrast">--text-medium-contrast</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded bg-white flex items-center justify-center mr-4 border border-border-subtle">
+                <span class="text-low-contrast font-bold">Aa</span>
+              </div>
+              <div>
+                <p class="font-medium">Low Contrast</p>
+                <p class="text-sm text-medium-contrast">--text-low-contrast</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="font-semibold mb-2">Accent</h3>
+          <div class="space-y-2">
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded mr-4 border border-border-subtle" style="background-color: var(--accent-9);"></div>
+              <div>
+                <p class="font-medium">Primary</p>
+                <p class="text-sm text-medium-contrast">--accent-9</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded mr-4 border border-border-subtle" style="background-color: var(--accent-10);"></div>
+              <div>
+                <p class="font-medium">Hover</p>
+                <p class="text-sm text-medium-contrast">--accent-10</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded mr-4 border border-border-subtle" style="background-color: var(--accent-3);"></div>
+              <div>
+                <p class="font-medium">Subtle</p>
+                <p class="text-sm text-medium-contrast">--accent-3</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-border-subtle">Status Colors</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="card p-6">
+          <h3 class="font-semibold mb-2">Success</h3>
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded mr-4" style="background-color: var(--success);"></div>
+            <div>
+              <p class="font-medium">--success</p>
+              <p class="text-sm text-medium-contrast">Primary</p>
+            </div>
+          </div>
+          <div class="flex items-center mb-2">
+            <div class="w-12 h-12 rounded mr-4" style="background-color: var(--success-background);"></div>
+            <div>
+              <p class="font-medium">--success-background</p>
+              <p class="text-sm text-medium-contrast">Background</p>
+            </div>
+          </div>
+          <div class="mt-4">
+            <span class="badge badge-completed">Completed</span>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="font-semibold mb-2">Warning</h3>
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded mr-4" style="background-color: var(--warning);"></div>
+            <div>
+              <p class="font-medium">--warning</p>
+              <p class="text-sm text-medium-contrast">Primary</p>
+            </div>
+          </div>
+          <div class="flex items-center mb-2">
+            <div class="w-12 h-12 rounded mr-4" style="background-color: var(--warning-background);"></div>
+            <div>
+              <p class="font-medium">--warning-background</p>
+              <p class="text-sm text-medium-contrast">Background</p>
+            </div>
+          </div>
+          <div class="mt-4">
+            <span class="badge badge-in-progress">In Progress</span>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="font-semibold mb-2">Error</h3>
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded mr-4" style="background-color: var(--error);"></div>
+            <div>
+              <p class="font-medium">--error</p>
+              <p class="text-sm text-medium-contrast">Primary</p>
+            </div>
+          </div>
+          <div class="flex items-center mb-2">
+            <div class="w-12 h-12 rounded mr-4" style="background-color: var(--error-background);"></div>
+            <div>
+              <p class="font-medium">--error-background</p>
+              <p class="text-sm text-medium-contrast">Background</p>
+            </div>
+          </div>
+          <div class="mt-4">
+            <span class="badge badge-planned">Planned</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-border-subtle">Color Scales</h2>
+      
+      {colorScales.map(colorScale => (
+        <div class="mb-8">
+          <h3 class="text-xl font-semibold mb-3">{colorScale.label} <span class="text-medium-contrast">({colorScale.description})</span></h3>
+          
+          <div class="flex flex-wrap gap-2">
+            {steps.map(step => (
+              <div class="text-center">
+                <div class="w-16 h-16 rounded mb-1" style={`background-color: var(--${colorScale.name}${step});`}></div>
+                <span class="text-xs text-medium-contrast">{step}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .bg-background-base {
+    background-color: var(--background-base);
+  }
+  
+  .bg-subtle {
+    background-color: var(--background-subtle);
+  }
+  
+  .bg-ui {
+    background-color: var(--background-ui);
+  }
+</style> 

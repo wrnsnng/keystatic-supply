@@ -1,0 +1,108 @@
+/* Radix Colors - Design System */
+@import '@radix-ui/colors/gray.css';
+@import '@radix-ui/colors/blue.css';
+@import '@radix-ui/colors/green.css';
+@import '@radix-ui/colors/red.css';
+@import '@radix-ui/colors/yellow.css';
+@import '@radix-ui/colors/amber.css';
+@import '@radix-ui/colors/orange.css';
+@import '@radix-ui/colors/purple.css';
+@import '@radix-ui/colors/violet.css';
+@import '@radix-ui/colors/indigo.css';
+@import '@radix-ui/colors/pink.css';
+@import '@radix-ui/colors/teal.css';
+@import '@radix-ui/colors/mauve.css';
+@import '@radix-ui/colors/slate.css';
+
+/* Color theme mapping for our design system */
+:root {
+  /* Background colors */
+  --background-base: var(--slate1);
+  --background-subtle: var(--slate2);
+  --background-ui: var(--slate3);
+  --background-ui-hover: var(--slate4);
+  --background-ui-active: var(--slate5);
+  
+  /* Text colors */
+  --text-high-contrast: var(--slate12);
+  --text-medium-contrast: var(--slate11);
+  --text-low-contrast: var(--slate10);
+  --text-on-accent: white;
+  
+  /* Border colors */
+  --border-subtle: var(--slate6);
+  --border-medium: var(--slate7);
+  --border-strong: var(--slate8);
+  
+  /* Primary accent colors */
+  --accent-1: var(--blue1);
+  --accent-2: var(--blue2);
+  --accent-3: var(--blue3);
+  --accent-4: var(--blue4);
+  --accent-5: var(--blue5);
+  --accent-6: var(--blue6);
+  --accent-7: var(--blue7);
+  --accent-8: var(--blue8);
+  --accent-9: var(--blue9);
+  --accent-10: var(--blue10);
+  --accent-11: var(--blue11);
+  --accent-12: var(--blue12);
+  
+  /* Status colors */
+  --success: var(--green9);
+  --success-background: var(--green3);
+  --success-text: var(--green11);
+  
+  --warning: var(--amber9);
+  --warning-background: var(--amber3);
+  --warning-text: var(--amber11);
+  
+  --error: var(--red9);
+  --error-background: var(--red3);
+  --error-text: var(--red11);
+  
+  /* Category colors - for our component categories */
+  --category-inputs: var(--purple9);
+  --category-inputs-bg: var(--purple3);
+  --category-inputs-text: var(--purple11);
+  
+  --category-navigation: var(--amber9);
+  --category-navigation-bg: var(--amber3);
+  --category-navigation-text: var(--amber11);
+  
+  --category-layout: var(--pink9);
+  --category-layout-bg: var(--pink3);
+  --category-layout-text: var(--pink11);
+  
+  --category-feedback: var(--orange9);
+  --category-feedback-bg: var(--orange3);
+  --category-feedback-text: var(--orange11);
+  
+  --category-data-display: var(--teal9);
+  --category-data-display-bg: var(--teal3);
+  --category-data-display-text: var(--teal11);
+  
+  --category-overlays: var(--indigo9);
+  --category-overlays-bg: var(--indigo3);
+  --category-overlays-text: var(--indigo11);
+  
+  /* Status colors - for our component statuses */
+  --status-planned: var(--gray9);
+  --status-planned-bg: var(--gray3);
+  --status-planned-text: var(--gray11);
+  
+  --status-in-progress: var(--blue9);
+  --status-in-progress-bg: var(--blue3);
+  --status-in-progress-text: var(--blue11);
+  
+  --status-completed: var(--green9);
+  --status-completed-bg: var(--green3);
+  --status-completed-text: var(--green11);
+}
+
+/* Dark mode overrides - for future implementation */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* We'll add dark mode colors here in the future */
+  }
+} 

@@ -6,19 +6,19 @@ const components = await getCollection('components');
 
 // Status display information
 const statusInfo = {
-  'planned': { label: 'Planned', color: 'bg-gray-200 text-gray-800' },
-  'in-progress': { label: 'In Progress', color: 'bg-blue-200 text-blue-800' },
-  'completed': { label: 'Completed', color: 'bg-green-200 text-green-800' }
+  'planned': { label: 'Planned', className: 'badge badge-planned' },
+  'in-progress': { label: 'In Progress', className: 'badge badge-in-progress' },
+  'completed': { label: 'Completed', className: 'badge badge-completed' }
 } as const;
 
 // Category information
 const categoryInfo = {
-  'inputs': { label: 'Inputs', description: 'Form controls and user input components' },
-  'navigation': { label: 'Navigation', description: 'Components for navigating the UI' },
-  'layout': { label: 'Layout', description: 'Structural and container components' },
-  'feedback': { label: 'Feedback', description: 'Components that provide user feedback' },
-  'data-display': { label: 'Data Display', description: 'Components for displaying data' },
-  'overlays': { label: 'Overlays', description: 'Modal and popup components' }
+  'inputs': { label: 'Inputs', description: 'Form controls and user input components', className: 'category-inputs' },
+  'navigation': { label: 'Navigation', description: 'Components for navigating the UI', className: 'category-navigation' },
+  'layout': { label: 'Layout', description: 'Structural and container components', className: 'category-layout' },
+  'feedback': { label: 'Feedback', description: 'Components that provide user feedback', className: 'category-feedback' },
+  'data-display': { label: 'Data Display', description: 'Components for displaying data', className: 'category-data-display' },
+  'overlays': { label: 'Overlays', description: 'Modal and popup components', className: 'category-overlays' }
 } as const;
 
 // Define valid category types
@@ -42,16 +42,16 @@ const categoriesWithComponents = Object.keys(componentsByCategory) as CategoryKe
   <div class="container mx-auto px-4 py-8 max-w-4xl">
     <header class="mb-8">
       <h1 class="text-3xl font-bold mb-2">Components</h1>
-      <p class="text-lg text-gray-600">
+      <p class="text-lg text-medium-contrast">
         Browse our collection of design system components
       </p>
     </header>
 
     {components.length === 0 ? (
-      <div class="text-center py-12 bg-gray-50 rounded-lg">
-        <p class="text-gray-500">No components have been added yet.</p>
+      <div class="text-center py-12 bg-subtle rounded-lg">
+        <p class="text-medium-contrast">No components have been added yet.</p>
         <p class="mt-4">
-          <a href="/keystatic/collection/components" class="text-blue-600 hover:underline">
+          <a href="/keystatic/collection/components" class="text-accent-9 hover:text-accent-10 hover:underline">
             Add a component in the admin UI
           </a>
         </p>
@@ -59,24 +59,24 @@ const categoriesWithComponents = Object.keys(componentsByCategory) as CategoryKe
     ) : (
       categoriesWithComponents.map(categoryKey => (
         <section class="mb-12">
-          <div class="border-b pb-2 mb-6">
+          <div class="border-b border-border-subtle pb-2 mb-6">
             <h2 class="text-2xl font-bold">{categoryInfo[categoryKey].label}</h2>
-            <p class="text-gray-600">{categoryInfo[categoryKey].description}</p>
+            <p class="text-medium-contrast">{categoryInfo[categoryKey].description}</p>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {componentsByCategory[categoryKey].map((component) => (
               <a 
                 href={`/components/${component.slug}`}
-                class="block p-6 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
+                class="card p-6"
               >
                 <div class="flex justify-between items-start mb-2">
                   <h3 class="text-xl font-semibold">{component.data.title}</h3>
-                  <span class={`px-2 py-1 rounded-full text-xs font-medium ${statusInfo[component.data.status].color}`}>
+                  <span class={`badge ${statusInfo[component.data.status].className}`}>
                     {statusInfo[component.data.status].label}
                   </span>
                 </div>
-                <p class="text-gray-600 line-clamp-3">{component.data.description}</p>
+                <p class="text-medium-contrast line-clamp-3">{component.data.description}</p>
               </a>
             ))}
           </div>
