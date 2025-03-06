@@ -6,19 +6,55 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+
+const navItems = [
+	{ text: 'Home', href: '/' },
+	{ text: 'Components', href: '/components' },
+	{ text: 'Blog', href: '/posts' },
+	{ text: 'Admin', href: '/keystatic' }
+];
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
+		<meta name="description" content="Design System Documentation">
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 	</head>
-	<body>
-		<slot />
+	<body class="min-h-screen flex flex-col">
+		<header class="bg-white shadow-sm">
+			<div class="container mx-auto px-4 py-4">
+				<div class="flex justify-between items-center">
+					<a href="/" class="text-xl font-bold">Supply Design System</a>
+					<nav>
+						<ul class="flex space-x-6">
+							{navItems.map(item => (
+								<li>
+									<a 
+										href={item.href} 
+										class="text-gray-600 hover:text-gray-900"
+									>
+										{item.text}
+									</a>
+								</li>
+							))}
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<main class="flex-grow">
+			<slot />
+		</main>
+		<footer class="bg-gray-50 py-6">
+			<div class="container mx-auto px-4 text-center text-gray-500">
+				<p>Supply Design System Documentation</p>
+			</div>
+		</footer>
 	</body>
 </html>

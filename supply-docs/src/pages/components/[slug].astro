@@ -1,0 +1,26 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import ComponentLayout from '../../layouts/ComponentLayout.astro';
+
+const { slug } = Astro.params;
+if (!slug) throw new Error('Slug not found');
+const component = await getEntry('components', slug);
+
+if (!component) throw new Error('No component found for this slug');
+const { Content } = await component.render();
+
+// Generate static pages
+export async function getStaticPaths() {
+  const components = await getCollection('components');
+  return components.map(component => ({ params: { slug: component.slug } }));
+}
+---
+
+<ComponentLayout 
+  title={component.data.title} 
+  description={component.data.description}
+  category={component.data.category}
+  status={component.data.status}
+>
+  <Content />
+</ComponentLayout> 

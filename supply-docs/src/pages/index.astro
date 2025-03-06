@@ -2,28 +2,86 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
-const posts = await getCollection('posts');
+const components = await getCollection('components');
+const recentComponents = components.slice(0, 3);
 ---
 
-<Layout title="Keystatic & Astro's Content Collections">
-  <div>
-    <h1>Keystatic ⚡️ + Astro 🚀</h1>
-    <p>
-      This homepage shows how to load data from Astro's content collections.
-    </p>
-    <p>
-      <a href="/keystatic">Click here to visit the Admin UI</a>, or the link
-      below to view a post in the collection.
-    </p>
-    <h2>Posts</h2>
-    <ul>
-      {
-        posts.map(post => (
-          <li>
-            <a href={`/posts/${post.slug}`}>{post.data.title}</a>
+<Layout title="Supply Design System Documentation">
+  <div class="container mx-auto px-4 py-12 max-w-5xl">
+    <section class="mb-16 text-center">
+      <h1 class="text-4xl font-bold mb-4">Supply Design System</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        A comprehensive design system to build consistent, accessible, and beautiful user interfaces.
+      </p>
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="/components" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md inline-block">
+          Browse Components
+        </a>
+        <a href="/keystatic" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-2 rounded-md inline-block">
+          Admin UI
+        </a>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <div class="flex justify-between items-baseline mb-6">
+        <h2 class="text-2xl font-bold">Components</h2>
+        {components.length > 3 && (
+          <a href="/components" class="text-blue-600 hover:underline">View all</a>
+        )}
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {recentComponents.map(component => (
+          <a 
+            href={`/components/${component.slug}`} 
+            class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow"
+          >
+            <h3 class="text-xl font-semibold mb-2">{component.data.title}</h3>
+            <p class="text-gray-600 line-clamp-2">{component.data.description}</p>
+          </a>
+        ))}
+      </div>
+
+      {components.length === 0 && (
+        <div class="text-center py-12 bg-gray-50 rounded-lg">
+          <p class="text-gray-500">No components have been added yet.</p>
+          <p class="mt-4">
+            <a href="/keystatic/collection/components" class="text-blue-600 hover:underline">
+              Add a component in the admin UI
+            </a>
+          </p>
+        </div>
+      )}
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold mb-6">Getting Started</h2>
+      <div class="bg-gray-50 p-8 rounded-lg">
+        <ol class="space-y-4">
+          <li class="flex gap-3">
+            <span class="bg-blue-600 text-white w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0">1</span>
+            <div>
+              <h3 class="font-semibold">Browse Components</h3>
+              <p class="text-gray-600">Explore our library of components, patterns, and guidelines.</p>
+            </div>
           </li>
-        ))
-      }
-    </ul>
+          <li class="flex gap-3">
+            <span class="bg-blue-600 text-white w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0">2</span>
+            <div>
+              <h3 class="font-semibold">Use Components</h3>
+              <p class="text-gray-600">Copy code snippets and implement them in your project.</p>
+            </div>
+          </li>
+          <li class="flex gap-3">
+            <span class="bg-blue-600 text-white w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0">3</span>
+            <div>
+              <h3 class="font-semibold">Contribute</h3>
+              <p class="text-gray-600">Add or edit components through the Admin UI.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
   </div>
 </Layout>

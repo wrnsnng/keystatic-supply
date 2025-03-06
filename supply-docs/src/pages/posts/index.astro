@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = await getCollection('posts');
+---
+
+<Layout title="Blog | Design System">
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold mb-2">Blog Posts</h1>
+      <p class="text-lg text-gray-600">
+        News, updates and insights about our design system
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 gap-8">
+      {posts.map((post) => (
+        <a 
+          href={`/posts/${post.slug}`}
+          class="block p-6 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
+        >
+          <h2 class="text-xl font-semibold mb-2">{post.data.title}</h2>
+        </a>
+      ))}
+    </div>
+
+    {posts.length === 0 && (
+      <div class="text-center py-12 bg-gray-50 rounded-lg">
+        <p class="text-gray-500">No blog posts have been added yet.</p>
+        <p class="mt-4">
+          <a href="/keystatic/collection/posts" class="text-blue-600 hover:underline">
+            Add a post in the admin UI
+          </a>
+        </p>
+      </div>
+    )}
+  </div>
+</Layout> 

@@ -1,0 +1,56 @@
+---
+import Layout from './Layout.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  category: 'inputs' | 'navigation' | 'layout' | 'feedback' | 'data-display' | 'overlays';
+  status: 'planned' | 'in-progress' | 'completed';
+}
+
+const { title, description, category, status } = Astro.props;
+
+// Get status label and color based on status value
+const statusInfo = {
+  'planned': { label: 'Planned', color: 'bg-gray-200 text-gray-800' },
+  'in-progress': { label: 'In Progress', color: 'bg-blue-200 text-blue-800' },
+  'completed': { label: 'Completed', color: 'bg-green-200 text-green-800' }
+}[status];
+
+// Get category label
+const categoryInfo = {
+  'inputs': { label: 'Inputs', color: 'bg-purple-100 text-purple-800' },
+  'navigation': { label: 'Navigation', color: 'bg-yellow-100 text-yellow-800' },
+  'layout': { label: 'Layout', color: 'bg-pink-100 text-pink-800' },
+  'feedback': { label: 'Feedback', color: 'bg-orange-100 text-orange-800' },
+  'data-display': { label: 'Data Display', color: 'bg-teal-100 text-teal-800' },
+  'overlays': { label: 'Overlays', color: 'bg-indigo-100 text-indigo-800' }
+}[category];
+---
+
+<Layout title={`${title} Component | Design System`}>
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <header class="mb-8">
+      <div class="flex flex-wrap items-center gap-4 mb-2">
+        <h1 class="text-3xl font-bold">{title}</h1>
+        <div class="flex gap-2">
+          <span class={`px-3 py-1 rounded-full text-sm font-medium ${categoryInfo.color}`}>
+            {categoryInfo.label}
+          </span>
+          <span class={`px-3 py-1 rounded-full text-sm font-medium ${statusInfo.color}`}>
+            {statusInfo.label}
+          </span>
+        </div>
+      </div>
+      <p class="text-lg text-gray-600">{description}</p>
+    </header>
+    
+    <div class="prose max-w-none">
+      <slot />
+    </div>
+  </div>
+</Layout>
+
+<style>
+  /* Add any component documentation specific styles here */
+</style> 

@@ -8,4 +8,13 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+const components = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    category: z.enum(['inputs', 'navigation', 'layout', 'feedback', 'data-display', 'overlays']),
+    status: z.enum(['planned', 'in-progress', 'completed']),
+  }),
+});
+
+export const collections = { posts, components };
